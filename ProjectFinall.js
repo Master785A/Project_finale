@@ -227,18 +227,14 @@ function SupprimerCandidat() {
 // 7. Rechercher des candidats
 function RechercherCandidat() {
 
-    let cinRecherche = prompt("Enter CIN du candidat : ");
+    let nomRecherche = prompt("Enter Nom du candidat : ");
 
     for (let i = 0; i < candidatsList.length; i++) {
 
-        if (candidatsList[i].cin === cinRecherche) {
+        if (candidatsList[i].nom === nomRecherche) {
 
             console.log("Candidat trouvé !");
             console.log("Nom : " + candidatsList[i].nom);
-            console.log("Prénom : " + candidatsList[i].prenom);
-            console.log("CIN : " + candidatsList[i].cin);
-            console.log("Âge : " + candidatsList[i].age);
-
             return;
         }
     }
@@ -248,5 +244,10 @@ function RechercherCandidat() {
 
 
 
+//8. Statistiques de l'élection :
 
 
+
+//9.menu affichage
+
+//10.
