@@ -141,34 +141,41 @@ function afficherCandidats() {
 
 
 // ===== 4. Voter pour un candidat :=====
-function voterCheckerAdding(cinElecteur) {
+function VoterPourCandidat() {
+
+    let cinElecteur = prompt("Entrez votre CIN : ");
 
     for (let i = 0; i < candidatsList.length; i++) {
 
-        let candidat = candidatsList[i];
+        if (candidatsList[i].electeurs.includes(cinElecteur)) {
 
-        for (let j = 0; j < candidat.electeurs.length; j++) {
-            let enter = prompt('Enter your CIN  : ');
-
-            if (candidat.electeurs[j] !== cinElecteur) {
-
-                console.log("This CIN doesn't exist.");
-                break;
-            }
-
-            if (candidat.electeurs[j] == cinElecteur) {
-                console.log('Si la CIN de l’électeur existe déjà dans une liste de votes,'
-                    + ' afficher le message Vous avez déjà voté et vous n’avez pas le droit de modifier' +
-                    'votre vote ni de voter à nouveau .');
-
-            }
+            console.log("Vous avez déjà voté !");
+            return;
         }
-
-        candidat.electeurs.push(cinElecteur);
-        console.log("CIN ajouté avec succès.");
-        return cinElecteur;
-
     }
+
+    let cinCandidat = prompt(
+        "Entrez le CIN du candidat pour lequel vous voulez voter : "
+    );
+
+    for (let i = 0; i < candidatsList.length; i++) {
+
+        if (candidatsList[i].cin === cinCandidat) {
+
+            // 5. Ajouter l'électeur à la liste du candidat
+            candidatsList[i].electeurs.push(cinElecteur);
+
+            console.log(
+                "Vote enregistré pour " +
+                candidatsList[i].prenom + " " +
+                candidatsList[i].nom
+            );
+
+            return;
+        }
+    }
+
+    console.log("Candidat introuvable !");
 }
 
  //5. Modifier les informations d'un candidat :
@@ -245,9 +252,88 @@ function RechercherCandidat() {
 
 
 //8. Statistiques de l'élection :
+function StatistiquesElection() {
+
+    let totalCandidats = candidatsList.length;
+    let totalVotes = 0;
+
+    let candidatGagnant = candidatsList[0];
+
+    for (let i = 0; i < candidatsList.length; i++) {
+
+        totalVotes = totalVotes + candidatsList[i].electeurs.length;
+
+        if (candidatsList[i].electeurs.length > candidatGagnant.electeurs.length) {
+
+            candidatGagnant = candidatsList[i];
+        }
+    }
+
+    console.log("===== Statistiques =====");
+    console.log("Nombre de candidats : " + totalCandidats);
+    console.log("Nombre total de votes : " + totalVotes);
+    console.log("Candidat avec le plus de votes : " + candidatGagnant.nom);
+    console.log("Nombre de votes : " + candidatGagnant.electeurs.length);
+}
 
 
 
-//9.menu affichage
+// 9. Menu Principal
+let a = true;
+function menuAffichage() {
+    while (a) {
+        console.log(
+            "\n=== GESTION DES ÉLECTIONS ===\n" +
+            "1. Ajouter un nouveau candidat\n" +
+            "2. Ajouter plusieurs candidats à la fois\n" +
+            "3. Afficher la liste des candidats\n" +
+            "4. Voter pour un candidat\n" +
+            "5. Modifier les informations d'un candidat\n" +
+            "6. Supprimer un candidat\n" +
+            "7. Rechercher des candidats\n" +
+            "8. Statistiques de l'élection\n" +
+            "0. Quitter"
+        );
 
-//10.
+        let choix = prompt("Entrez votre choix (0-8) : ");
+
+        if (choix === "0") {
+            console.log("Fermeture de l'application. Au revoir !");
+            break;
+        }
+
+        switch (choix) {
+            case "1":
+                AjouterCandidat();
+                break;
+            case "2":
+                AjouterPlusieursCandidats();
+                break;
+            case "3":
+                afficherCandidats();
+                break;
+            case "4":
+                VoterPourCandidat();
+                break;
+            case "5":
+                ModifierCandidat();
+                break;
+            case "6":
+                SupprimerCandidat();
+                break;
+            case "7":
+                RechercherCandidat();
+                break;
+            case "8":
+                StatistiquesElection();
+                break;
+            default:
+                console.log("Choix invalide, veuillez entrer un nombre entre 0 et 8.");
+                break;
+        }
+
+        prompt("\nAppuyez sur Entrée pour revenir au menu principal...");
+    }
+}
+
+menuAffichage();
