@@ -1,7 +1,8 @@
 const prompt = require("prompt-sync")();
 
-const candidatsList = [
-    {   cin: "AB123456",
+const candidatsList = {
+    candidatsN1: {
+        cin: "AB123456",
         nom: "Boushaba",
         prenom: "Soufiane",
         partiPolitique: "Indépendant",
@@ -10,7 +11,7 @@ const candidatsList = [
         electeurs: []
     },
 
-    candidatsN2: [{
+    candidatsN2: {
         cin: "AD597632",
         nom: "Benabdallah",
         prenom: "Mohamed Nabil",
@@ -18,29 +19,19 @@ const candidatsList = [
         typePolitique: "Gauche",
         age: 67,
         electeurs: []
-    }],
+    },
 
-    candidatsN3: [{
+    candidatsN3: {
         cin: "AA756321",
         nom: "Benkiran",
-        prenom: "Abdelilah ",
+        prenom: "Abdelilah",
         partiPolitique: "(PJD) Parti de la Justice et du Développement",
         typePolitique: "Droit",
         age: 72,
         electeurs: []
-    }]
-]
-
-function addElecteurs(cin) {
-    for(let i = 0; i < cin.length; i++){
-    let electeur = [];
-    let add = candidatsList.electeurs.push;
-    console.log(add);
-
     }
-}
+};
 
-
-addElecteurs(132);
+console.log(candidatsList);
 
 
