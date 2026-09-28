@@ -57,9 +57,26 @@ let candidatsList = [
 
 
 
+//1. Ajouter un nouveau candidat :
+function AjouterCandidat {
+const nouveauCandidat = {
+    candidat_N: candidatsList.length + 1,
+    cin: prompt("Enter CIN: "),
+    nom: prompt("Enter nom: "),
+    prenom: prompt("Enter prénom: "),
+    partiPolitique: prompt("Enter parti politique: "),
+    typePolitique: prompt("Enter type politique: "),
+    age: Number(prompt("Enter âge: ")),
+    electeurs: []
+};
 
+candidatsList.push(nouveauCandidat);
 
-// ===== FUNCTION: Add a voter cin =====
+console.log("Nouveau candidat ajouté avec succès !");
+console.log(nouveauCandidat);
+}
+
+// ===== FUNCTION: Add a voter cin //4. Voter pour un candidat :=====
 function voterChecker(cinElecteur) {
 
     for (let i = 0; i < candidatsList.length; i++) {
