@@ -1,3 +1,5 @@
+const prompt = require("prompt-sync")();
+
 const candidatsList = [
     {   cin: "AB123456",
         nom: "Boushaba",
@@ -29,14 +31,13 @@ const candidatsList = [
     }]
 ]
 
-function addElecteurs(cin, nom, prénom) {
-    let electeur = {
-        cin : cin,
-        nom : nom,
-        prénom : prénom,
-    };
+function addElecteurs(cin) {
+    for(let i = 0; i < cin.length; i++){
+    let electeur = [];
     let add = candidatsList.electeurs.push;
     console.log(add);
+
+    }
 }
 
 
