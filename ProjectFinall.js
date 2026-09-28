@@ -111,8 +111,25 @@ function AjouterCandidat() {
 
 }
 
+//2. Ajouter plusieurs candidats à la fois.
 
-// ===== FUNCTION: Add a voter cin //4. Voter pour un candidat :=====
+
+//3. Afficher la liste des candidats :
+function afficherCandidats() {
+
+    for (let i = 0; i < candidatsList.length; i++) {
+
+        console.log("# Candidat " + (i + 1) + ":");
+        console.log("CIN: " + candidatsList[i].cin);
+        console.log("Nom: " + candidatsList[i].nom);
+        console.log("-------------");
+    }
+}
+
+
+afficherCandidats();
+
+// ===== 4. Voter pour un candidat :=====
 function voterCheckerAdding(cinElecteur) {
 
     for (let i = 0; i < candidatsList.length; i++) {
