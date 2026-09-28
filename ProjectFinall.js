@@ -58,26 +58,38 @@ let candidatsList = [
 
 
 //1. Ajouter un nouveau candidat :
-function AjouterCandidat {
-const nouveauCandidat = {
-    candidat_N: candidatsList.length + 1,
-    cin: prompt("Enter CIN: "),
-    nom: prompt("Enter nom: "),
-    prenom: prompt("Enter prénom: "),
-    partiPolitique: prompt("Enter parti politique: "),
-    typePolitique: prompt("Enter type politique: "),
-    age: Number(prompt("Enter âge: ")),
-    electeurs: []
-};
+function AjouterCandidat() {
 
-candidatsList.push(nouveauCandidat);
+    const nouveauCandidat = {
+        candidat_N: "candidat_N" + (candidatsList.length + 1),
 
-console.log("Nouveau candidat ajouté avec succès !");
-console.log(nouveauCandidat);
+        cin: prompt("Enter CIN: "),
+
+        nom: prompt("Enter nom: "),
+
+        prenom: prompt("Enter prénom: "),
+
+        partiPolitique: prompt("Enter parti politique: "),
+
+        typePolitique: prompt("Enter type politique: "),
+
+        age: Number(prompt("Enter âge: ")),
+
+        electeurs: []
+    };
+    
+    candidatsList.push(nouveauCandidat);
+
+    console.log("Nouveau candidat ajouté avec succès !");
+    console.log(nouveauCandidat);
+
+    return nouveauCandidat;
 }
+console.log(AjouterCandidat());
+
 
 // ===== FUNCTION: Add a voter cin //4. Voter pour un candidat :=====
-function voterChecker(cinElecteur) {
+function voterCheckerAdding(cinElecteur) {
 
     for (let i = 0; i < candidatsList.length; i++) {
 
@@ -102,7 +114,7 @@ function voterChecker(cinElecteur) {
 
         candidat.electeurs.push(cinElecteur);
         console.log("CIN ajouté avec succès.");
+        return cinElecteur;
 
-        return;
     }
 }
