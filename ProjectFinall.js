@@ -201,6 +201,26 @@ function ModifierCandidat() {
 
 
 //6. Supprimer un candidat :
+function SupprimerCandidat() {
+
+    let cin = prompt("Enter CIN du candidat à supprimer : ");
+
+    for (let i = 0; i < candidatsList.length; i++) {
+
+        if (candidatsList[i].cin === cin) {
+
+            // Supprimer le candidat
+            candidatsList.splice(i, 1);
+
+            console.log("Candidat supprimé avec succès !");
+
+            return;
+        }
+    }
+
+    // Si le candidat n'est pas trouvé
+    console.log("Candidat introuvable !");
+}
 
 
 
