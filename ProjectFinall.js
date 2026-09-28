@@ -111,7 +111,20 @@ function AjouterCandidat() {
 
 }
 
-//2. Ajouter plusieurs candidats à la fois.
+// 2. Ajouter plusieurs candidats à la fois
+function AjouterPlusieursCandidats() {
+
+    let nombre = Number(prompt("Combien de candidats voulez-vous ajouter ? "));
+
+    for (let i = 0; i < nombre; i++) {
+
+        console.log("===== Candidat " + (i + 1) + " =====");
+
+        AjouterCandidat();
+    }
+
+    console.log("Tous les candidats ont été ajoutés !");
+}
 
 
 //3. Afficher la liste des candidats :
@@ -126,8 +139,6 @@ function afficherCandidats() {
     }
 }
 
-
-afficherCandidats();
 
 // ===== 4. Voter pour un candidat :=====
 function voterCheckerAdding(cinElecteur) {
@@ -159,3 +170,42 @@ function voterCheckerAdding(cinElecteur) {
 
     }
 }
+
+ //5. Modifier les informations d'un candidat :
+function ModifierCandidat() {
+
+    let cinRecherche = prompt("Enter CIN du candidat : ");
+
+    for (let i = 0; i < candidatsList.length; i++) {
+
+        if (candidatsList[i].cin === cinRecherche) {
+
+            console.log("Candidat trouvé !");
+
+            let nouveauNom = prompt("Enter nouveau nom : ");
+            let nouveauPrenom = prompt("Enter nouveau prénom : ");
+            let nouvelAge = Number(prompt("Enter nouvel âge : "));
+
+            candidatsList[i].nom = nouveauNom;
+            candidatsList[i].prenom = nouveauPrenom;
+            candidatsList[i].age = nouvelAge;
+
+            console.log("Candidat modifié avec succès !");
+
+            return;
+        }
+    }
+
+    console.log("Candidat introuvable !");
+}
+
+
+//6. Supprimer un candidat :
+
+
+
+//7. Rechercher des candidats :
+
+
+
+//8. Statistiques de l'élection :
