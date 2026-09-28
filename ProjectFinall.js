@@ -3,7 +3,7 @@ const prompt = require("prompt-sync")();
 let i = 0;
 let candidatsList = [
     {
-        candidat_N : "candidat_N"+1,
+        candidat_N: "candidat_N" + 1,
         cin: "AB123456",
         nom: "Boushaba",
         prenom: "Soufiane",
@@ -14,7 +14,7 @@ let candidatsList = [
     },
 
     {
-        candidat_N : "candidat_N"+2,
+        candidat_N: "candidat_N" + 2,
         cin: "AD597632",
         nom: "Benabdallah",
         prenom: "Mohamed Nabil",
@@ -25,7 +25,7 @@ let candidatsList = [
     },
 
     {
-        candidat_N : "candidat_N"+3,
+        candidat_N: "candidat_N" + 3,
         cin: "AA756321",
         nom: "Benkiran",
         prenom: "Abdelilah",
@@ -36,7 +36,7 @@ let candidatsList = [
     },
 
     {
-        candidat_N : "candidat_N"+4,
+        candidat_N: "candidat_N" + 4,
         cin: "AC845219",
         nom: "El Mansouri",
         prenom: "Yassine",
@@ -57,35 +57,59 @@ let candidatsList = [
 
 
 
-//1. Ajouter un nouveau candidat :
+//1. Ajouter un nouveau candidat & Fonction pour ajouter un candidat
 function AjouterCandidat() {
 
-    const nouveauCandidat = {
+    let cin = prompt("Enter CIN : ");
+    let nom = prompt("Enter nom : ");
+    let prenom = prompt("Enter prénom : ");
+    let age = Number(prompt("Enter âge : "));
+
+
+    // Vérifier si le CIN existe déjà
+    for (let i = 0; i < candidatsList.length; i++) {
+
+        if (candidatsList[i].cin === cin) {
+            console.log("Erreur : ce CIN existe déjà !");
+            return;
+        }
+    }
+
+
+    // Vérifier si le nom existe déjà
+    for (let i = 0; i < candidatsList.length; i++) {
+
+        if (candidatsList[i].nom === nom) {
+            console.log("Erreur : ce nom existe déjà !");
+            return;
+        }
+    }
+
+
+    // Créer le nouveau candidat
+    let nouveauCandidat = {
+
         candidat_N: "candidat_N" + (candidatsList.length + 1),
 
-        cin: prompt("Enter CIN: "),
+        cin: cin,
 
-        nom: prompt("Enter nom: "),
+        nom: nom,
 
-        prenom: prompt("Enter prénom: "),
+        prenom: prenom,
 
-        partiPolitique: prompt("Enter parti politique: "),
-
-        typePolitique: prompt("Enter type politique: "),
-
-        age: Number(prompt("Enter âge: ")),
+        age: age,
 
         electeurs: []
     };
-    
+
+
+    // Ajouter le nouveau candidat dans le tableau
     candidatsList.push(nouveauCandidat);
 
-    console.log("Nouveau candidat ajouté avec succès !");
-    console.log(nouveauCandidat);
+    console.log("Candidat ajouté avec succès !");
+    console.log(candidatsList); /// After Ajoter
 
-    return nouveauCandidat;
 }
-console.log(AjouterCandidat());
 
 
 // ===== FUNCTION: Add a voter cin //4. Voter pour un candidat :=====
@@ -96,7 +120,7 @@ function voterCheckerAdding(cinElecteur) {
         let candidat = candidatsList[i];
 
         for (let j = 0; j < candidat.electeurs.length; j++) {
-            let enter =  prompt('Enter your CIN  : ' );
+            let enter = prompt('Enter your CIN  : ');
 
             if (candidat.electeurs[j] !== cinElecteur) {
 
@@ -106,9 +130,9 @@ function voterCheckerAdding(cinElecteur) {
 
             if (candidat.electeurs[j] == cinElecteur) {
                 console.log('Si la CIN de l’électeur existe déjà dans une liste de votes,'
-                +' afficher le message Vous avez déjà voté et vous n’avez pas le droit de modifier'+
-                 'votre vote ni de voter à nouveau .');
-            
+                    + ' afficher le message Vous avez déjà voté et vous n’avez pas le droit de modifier' +
+                    'votre vote ni de voter à nouveau .');
+
             }
         }
 
