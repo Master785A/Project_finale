@@ -48,15 +48,6 @@ let candidatsList = [
 ];
 
 
-
-
-
-
-
-
-
-
-
 //1. Ajouter un nouveau candidat & Fonction pour ajouter un candidat
 function AjouterCandidat() {
 
